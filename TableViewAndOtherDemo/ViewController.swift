@@ -55,6 +55,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
     
        
+        
 //      http://stackoverflow.com/questions/24022763/uitableview-in-swift
 //      Let's find a solution without creating custom subclasses or nibs
         

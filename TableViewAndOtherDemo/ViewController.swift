@@ -76,7 +76,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //      we know that cell is not empty now so we use ! to force unwrapping
         
         cell!.textLabel.text = "Привет \(dataSource.objectAtIndex(indexPath.row) as NSString)"
-     
+        
+        println(indexPath.row)
         
         return cell!
     }
@@ -87,6 +88,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
         return 1
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        var alert:UIAlertController = UIAlertController(title: "Message", message: "Очень важное сообщение", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alert.addAction(UIAlertAction(title: "Закрыть", style: UIAlertActionStyle.Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Покрасить заголовок",
+                                      style: UIAlertActionStyle.Default,
+                                    handler: {AlertAction in
+                                        UIView.animateWithDuration(1,
+                                            animations: {self.headerView.backgroundColor = UIColor.blueColor()
+                                                },
+                                            completion: {success in
+                                                println("Animation finished")
+                                                })
+                                     }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        }
+    
+    
+    
+    
+    
     // 7
     func textFieldShouldReturn(textField: UITextField) -> Bool { // called when 'return' key pressed. return NO to ignore.
         textField.resignFirstResponder() // не понятный метод....
